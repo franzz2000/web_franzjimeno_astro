@@ -29,12 +29,12 @@ const hasDefaultSlot = Astro.slots.has('default');
             )}
         </div>
         <ul>
-            {!page.data.length && 'No posts found.'}
+            {!page.data.length && 'No se han encontrado posts.'}
             {page.data.map(({slug, data: {date, title, summary, tags}}: CollectionEntry<'blog'>) => (
                             <li class="py-4">
                                 <article class="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                                     <dl>
-                                        <dt class="sr-only">Published on</dt>
+                                        <dt class="sr-only">Publicado el</dt>
                                         <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                                             <FormattedDate date={date}/>
                                         </dd>

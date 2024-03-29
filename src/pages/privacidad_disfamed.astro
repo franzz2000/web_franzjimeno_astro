@@ -1,0 +1,38 @@
+---
+import {getCollection} from "astro:content";
+
+import RootLayout from "@/layouts/RootLayout.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+const date = new Date("2022-10-14")
+---
+
+<RootLayout title="Política de privacidad de la app Disfamed" description="Política de privacidad de la app Disfamed">
+  <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Política de privacidad de la app Disfamed</h1>
+
+  <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+    <FormattedDate date={date} />
+  </dd>
+
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">El presente Política de Privacidad establece los términos en que Francisco José Jimeno, propietario de la aplicación Disfamed, usa y protege la información que es proporcionada por sus usuarios al momento de utilizar su aplicación. Sin embargo esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.</p>
+  
+  <h2 class="text-2xl font-bold leading-8 tracking-tight">Información que es recogida</h2>
+  
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">La aplicación no recoge información personal de los usuarios de la aplicación.</p>
+  
+  <h2 class="text-2xl font-bold leading-8 tracking-tight">Cookies</h2>
+  
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">La aplicación no utiliza cookies.</p>
+  
+  <h2 class="text-2xl font-bold leading-8 tracking-tight">Enlaces a Terceros</h2>
+  
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">La aplicación no utiliza enlaces a terceros.</p>
+  
+  <h2 class="text-2xl font-bold leading-8 tracking-tight">Control de su información personal</h2>
+  
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">En cualquier momento usted puede restringir la recopilación o el uso de la información personal que es proporcionada a través del contacto de correo electrónico.</p>
+  
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">El propietario no venderá, cederá ni distribuirá la información personal que es recopilada sin su consentimiento, salvo que sea requerido por un juez con un orden judicial.</p>
+
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">Francisco José Jimeno se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</p>
+</RootLayout>

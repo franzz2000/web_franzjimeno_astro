@@ -1,0 +1,63 @@
+---
+title: Configurar eslint en el entorno de programación javascript y Visual Studio Code
+date: "2023-05-01"
+tags: ["programación", "javascript"]
+draft: false
+summary: Cómo configurar el entorno de programación javascript en VSC
+---
+
+# Introducción
+
+Cuando estamos programando, es muy importante tener un buen programa que nos ayude a tener un código limpio y libre de fallos. Para ello existe una herramienta que podemos instalar en nuestro entorno de programación que nos facilita esa tarea. Comunmente los llamamos //linter// ya que este es el nombre que tenía la aplicación más común para esta necesidad.
+
+En esta ocasión utlizaré eslint dentro del entorno de programación en javascript.
+
+# Configurar el linter en un entorno de programación
+
+Para poder configurar el entorno necesitaremos tener instalado nodejs, ya que este será el que nos importe la aplicación que necesitamos. Para que funcione correctamente necesitaremos al menos la versión 12.22.0 e instalado soportando SSL. Esta última opción estará activa si lo has instalado con las opciones por defecto.
+
+Ejecutamos la siguiente linea en el directorio raiz de nuestro proyecto:
+
+```bash
+npm init @eslint/config -- --config standard
+```
+
+Se ejecutará el instalador teniendo en cuenta la configuración de standard, que es el estilo estándar de javascript.
+
+# Extensiones interesantes
+
+## ESLint
+
+Vale la pena instalar la extensión de Eslint en Visual Studio code para que éste esté correctamente integrado.
+
+![Extensión ESLint](/static/images/2023-05-01-09-54-11.png)
+
+## Error Lens
+
+Mostrar errores en la misma linea del errores
+
+Para ello podemos intalar la extensión **Error Lens**.
+
+![Extensión Error Lens](/static/images/2023-05-01-09-50-19.png)
+
+## Prettier
+
+Formato de código bonito con prettier
+
+Prettier es una funcionalidad de modifica la disposición del código, de manera que siempre siga un formato de código recomendado.
+
+Primeramente tenemos que haber instalado la extensión para Visual Studio Code llamada Prettier - Code formatter
+
+![Prettier](/static/images/2023-05-01-09-24-15.png)
+
+# Configurar eslint desde la linea de comandos
+
+Si queremos que eslint se ejecute en el proyecto podemos añadir a package.json la opción de ejecución de eslint:
+
+```javascript
+"scripts": {
+  ...
+  "lint": "eslint ."
+  ...
+}
+```

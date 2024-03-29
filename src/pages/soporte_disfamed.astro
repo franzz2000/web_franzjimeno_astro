@@ -1,0 +1,25 @@
+---
+import {getCollection} from "astro:content";
+
+import RootLayout from "@/layouts/RootLayout.astro";
+import Link from "@/components/Link.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+const date = new Date("2022-10-14")
+---
+
+<RootLayout title="Soporte de la app Disfamed" description="Soporte de la app Disfamed">
+  <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Soporte de la aplicación Disfamed</h1>
+
+  <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400 py-2">
+    <FormattedDate date={date} />
+  </dd>
+
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">La aplicación Disfamed se ha realizado a partir de la Guía de formas farmacéuticas para pacientes con Disfagia, realizado por la Unidad de Disfagia del Área Sanitaria IV del Principado de Asturias.</p>
+  
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">La guía es una herramienta de consulta para la administración de los fármacos exclusivamente por Vía Oral (No aplicables a la administración por sondas).</p>
+
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">Su uso está pensado para profesionales sanitarios.</p>
+
+  <p class="text-lg leading-7 text-gray-500 dark:text-gray-400 py-6">Para cualquier problema o duda acerca de la aplicación puede ponerse en contacto a través de la dirección disfamed.app@gmail.com</p>
+</RootLayout>
