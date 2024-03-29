@@ -76,7 +76,7 @@ const isProduction = import.meta.env.PROD;
     description={description}
     nofollow={robots.includes("nofollow")}
     noindex={robots.includes("noindex")}
-    url={Astro.url}
+    canonical={Astro.url}
     charset="utf-8"
     extend={{
       meta: [
