@@ -1,7 +1,7 @@
 ---
 title: Instalar Liferay con Docker
 date: "2022-06-17"
-tags: ["programación"]
+tags: ["programación",]
 draft: false
 summary: Cómo instalar Liveray en un Docker
 cover: '@/assets/og-image.png'
