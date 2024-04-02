@@ -1,7 +1,7 @@
 ---
 title: Fuentes nuevas en página web, alternativa a Lorem Ipsum
 date: "2013-11-12"
-tags: ["programación"]
+tags: ["programación_web"]
 draft: false
 summary: Han cambiado mucho las cosas desde que apareció HTML5 y CSS3. Entre las que me parece interesantes está la posibilidad de añadir fuentes a las páginas web.
 ---
