@@ -5,11 +5,15 @@ import Logo from "./Logo.astro";
 import MobileNav from "@/solid/MobileNav.tsx";
 import ThemeSwitcher from "@/solid/ThemeSwitcher.tsx";
 import { useTranslations } from "@/i18n";
+import cabecera from "@/assets/cabecera.jpg"
+import Cabecera_url from "@/assets/cabecera.jpg?url"
+import { getImage } from "astro:assets";
 
 const t = useTranslations();
+const optimizedBackground = await getImage({src: cabecera, format: 'webp'})
 ---
 
-<header class="flex items-center justify-between py-10">
+<header class="flex items-center justify-between py-10 shadow-lg" style="background-image: url({Cabecera_url})">
   <div class="mr-3 md:w-40 w-20">
     <a href="/" aria-label={t("siteMetadata.headerTitle")}>
       <Logo class="w-full" />

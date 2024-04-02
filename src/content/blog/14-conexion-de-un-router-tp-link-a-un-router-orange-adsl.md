@@ -22,4 +22,4 @@ El TP-link hay que configurarlo dentro del apartado de WAN para que realice una 
 
 Aquí muestro una captura de la página de configuración:
 
-![configuracion tp-link](/static/images/configuracion_tp-link.png) 
+![configuracion tp-link](@/assets/configuracion_tp-link.png) 
