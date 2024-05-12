@@ -1,0 +1,172 @@
+---
+title: Crear un entorno de programación de pyhton en Mac con opción a compilar en formato Windows
+date: "2024-05-12"
+tags: ["programación", "python"]
+draft: false
+summary: Cómo configurar el entorno de programación javascript en VSC
+---
+
+# Introducción
+
+Estoy haciendo mis primeros pinos con Python. Veo que para programar en este lenguaje es recomendable configurar un entorno virtual para evitar conflictos de paquetes instalados, que pueden variar de un proyecto a otro.
+
+Voy a describir los pasos que he realizado para poder crear el entorno de programación.
+
+Yo trabajo con MacOs, por lo que todo lo descrito a continuación está relacionado con este sistema operativo.
+
+# Crear el entorno virtual con venv
+
+Información extraída de la página de configuración de python. 
+
+https:__packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#create-and-use-virtual-environments
+
+## Crear carpetas y activar entorno virtual
+
+Primeramente crearemos un directorio en el que incluiremos nuestros ficheros de python. El directorio se puede crear a través del Finder o desde la terminal:
+
+```bash
+mkdir [nombre_del_proyecto]
+cd [nombre_del_proyecto]
+```
+Luego crearé el entorno virtual de Python con venv. Es importante que ejecutemos el comando en una versión de Python 3. En mi ordenador se ejecuta por defecto la versión 2. Podemos ver qué versión se ejecuta por defecto mediante el siguiente comando de la terminal:
+
+
+```bash
+python --version
+python3 --version
+```
+
+Si nos aparece una versión inferior la 3, tendremos que cambiar el comando __python__ por __python3__. Con este comando se creará un entorno virtual que utilizará la misma version de Python 3 que el comando __python3__.
+
+```bash
+python3 -m venv .venv
+```
+
+Si listamos los ficheros del directorio, veremos que se ha creado un directorio nuevo llamado __.venv__
+
+```bash
+ls -la
+```
+
+## Activar el entorno virtual
+
+Para activar el entorno virtual ejecutaremos el siguiente comando:
+
+```bash
+source .env/bin/activate
+```
+
+## Instalar paquetes necesarios para el desarrollo de la aplicación
+
+A partir de ahora ya no será necesario utilizar el comando __python3__, utilizaremos el comando __python__. Podemos comprobar que la version de python está en nuestro directorio de trabajo. El comando nos mostrará la ruta de dónde está el fichero ejecutado. Esta debería ser la ruta dentro de nuestro directorio de trabajo.
+
+```bash
+which python
+```
+A partir de aquí ya podremos instalar los paquetes con la aplicación pip.
+
+# Crear repositorio git
+
+Para trabajar con git, primeramente inicializaremos el repositorio desde el directorio raíz.
+
+```bash
+git init
+```
+
+Se creará un nuevo directorio __.git__ en el que estarán los ficheros de control de las versiones. No se debe tocar ni quitar.
+
+Creamos un fichero nuevo llamado __.gitignore__ que permite indicar qué directorios o ficheros queremos que no se gestionen a través de git. En mi caso he añadido los siguientes:
+
+```bash
+.venv
+
+/build
+/dist
+
+resultado.xlsx
+
+convertir.spec
+```
+
+Aquí se pueden añadir los que se quieran.
+
+## Primer commit
+
+Los commit son puntos de registro del control de versiones. Indicaremos qué queremos registrar todos los ficheros con el parámetro "-a". Ponemos una breve explicación del cambio que hemos hecho después del parámetro "-m".
+
+```bash
+git commit -a -m "Primer commit"
+```
+
+# Crear ejecutables del programa creado para poder distribuirlos
+
+Para poder distribuir un programa hecho en python sin tener que instalar python, podemos crear un fichero ejecutable con la aplicación pyInstaller. Lo podemos hacer de la siguiente manera:
+
+## Ejecutable de Mac
+
+```bash
+pyinstaller --onefile tu_script.py
+```
+
+## Ejecutable de Windows
+
+Para poder crear un ejecutable desde Mac para Windows se puede utilizar wine, que es una capa de compatibilidad de software que permite ejecutar aplicaciones diseñadas para Microsoft Windows en otros sitemas operativos.
+
+Estos pasos los tendremos que hacer una sola vez en cada ordenador.
+
+### Instalar wine desde homebrew
+
+Ejecutaremos la siguiente sentencia desde una terminal.
+
+```bash
+brew install --cask wine-stable
+```
+
+### Instalar pyhton en el entorno wine
+
+Descargaremos la aplicación de instalación de Pyhton 3 para windows. Es importante asegurarse que se trata de la versión para Windows, ya que por defecto la página web de Python nos descargará la de MacOs.
+
+Una vez descargada y desde el directorio donde tenemos el fichero ejecutaremos:
+
+```bash
+wine [archivo_de_instalacion_python].exe
+```
+
+Se ejecutará el programa de insalación de Windows bajo Wine. Aparecerán varios errores en la termnal que no afectan a la instalación.
+
+Aceptaremos todas las opciones por defecto excepto la de añadir Python a PATH, que deberemos activar, ya que aparece desmarcada por defecto.
+
+Una vez instalado Python, ya podremos abrir la consola de windows y ejecutar python en el entorno Windows.
+
+```bash
+wine cmd
+```
+Antes de ejecutar pyInstaller deberemos instalar todos los paquetes de python necesarios para nuestro proyecto en wine. Aunque aun no lo he explicado podremos instalar los paquetes necesarios mediante el programa pip, recuperando los paquetes del fichero requirements.txt (Ver más adelante cómo creo este fichero). También instalaremos pyInstaller.
+
+```bash
+pyhton3 -m pip install -r requirements.txt
+python3 pip install pyInstaller
+```
+
+Si ejecutamos la pyInstaller desde la consola de wine, obtendremos un ejecutable .exe que se puede utilizar en entrnos Windows.
+
+```bash
+pyinstaller --onefile tu_script.py
+```
+
+Podemos salir de la consola de wine ejecutando el comando exit.
+
+```bash
+exit
+```
+
+Los ejecutables se incluirán dentro de la carpeta "dist".
+
+## Guardar los paquetes necesarios para la ejecución del programa desarrollado
+
+Par ayudar a instalar los paquetes necesarios de python si lo clonamos con git, deberemos instalar todos los paquetes que se incluyen en el fichero requirements.txt. Este fichero se puede crear con el siguiente comando:
+
+```bash
+python3 -m pip freeze > requirements.txt
+```
+
