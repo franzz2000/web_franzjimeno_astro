@@ -9,22 +9,22 @@ export const SITE_METADATA = {
     description: 'A blog created with Astro and Tailwind.css',
     language: 'en-us',
     theme: 'system', // Options: system, light, dark, Does not work yet
-    siteUrl: 'https://astro-starter-blog.yon.fun/',
-    siteRepo: 'https://github.com/wanoo21/tailwind-astro-starting-blog',
+    siteUrl: '',
+    siteRepo: 'https://franzjimeno.es',
     siteLogo: '/static/images/logo.png',
     socialBanner: '/static/images/twitter-card.png',
     locale: 'en-US',
 
     // The following are subject to change. They are placeholders for now.
     // This project provide a default author content see src/content/authors/default.mdx, so these details are better to be inserted there.
-    author: 'John Doe',
-    mastodon: 'https://mastodon.social/@mastodonuser',
-    email: 'address@yoursite.com',
-    github: 'https://github.com',
-    twitter: 'https://twitter.com/Twitter',
-    facebook: 'https://facebook.com',
-    youtube: 'https://youtube.com',
-    linkedin: 'https://www.linkedin.com',
+    author: 'Franz Jimeno',
+    mastodon: '',
+    email: '',
+    github: 'https://github.com/franzz2000',
+    twitter: '@franzz2000',
+    facebook: '',
+    youtube: '',
+    linkedin: '',
 
     // These are not supported yet
     // analytics: {
