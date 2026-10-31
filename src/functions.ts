@@ -10,7 +10,8 @@ import type {CollectionEntry} from "astro:content";
  * @param posts Collection of blog posts
  * @returns Collection of blog posts sorted by date
  */
-export const sortBlogPosts = (posts: CollectionEntry<'blog'>[]): CollectionEntry<'blog'>[] => {
+export const sortBlogPosts = (posts: CollectionEntry<'blog'>[] | null): CollectionEntry<'blog'>[] => {
+    if (!posts) return [];
     return posts.sort((a, b) => {
         return new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
     })
@@ -23,5 +24,5 @@ export const sortBlogPosts = (posts: CollectionEntry<'blog'>[]): CollectionEntry
  * @returns True if the post is not a draft
  */
 export const excludeDrafts = ({data}: CollectionEntry<'blog'>): boolean => {
-    return import.meta.env.PROD ? !data.draft : true;
+    return import.meta.env.PROD ? true : !data.draft;
 }

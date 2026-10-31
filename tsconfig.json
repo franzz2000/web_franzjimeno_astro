@@ -4,9 +4,10 @@
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+      "@/*": ["src/*"],
+      "@/solid/*": ["src/components/solidjs/*"],
+    },
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
   }
 }
