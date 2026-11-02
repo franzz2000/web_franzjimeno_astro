@@ -4,16 +4,17 @@
  * A few of these are not used yet, and are subject to change, example of this is Author.
  */
 export const SITE_METADATA = {
-    title: 'Astro Starter Blog',
-    headerTitle: 'Astro Starter Blog',
-    description: 'A blog created with Astro and Tailwind.css',
-    language: 'en-us',
+    title: 'Web de Franz Jimeno',
+    headerTitle: 'Franz Jimeno',
+    description: 'Web personal de Franz Jimeno',
+    language: 'es-ES',
+    locale: 'es-ES',
     theme: 'system', // Options: system, light, dark, Does not work yet
-    siteUrl: '',
-    siteRepo: 'https://franzjimeno.es',
+    siteUrl: 'https://franzjimeno.es',
+    siteRepo: 'https://github.com/franzz2000/web_franzjimeno_astro',
     siteLogo: '/static/images/logo.png',
     socialBanner: '/static/images/twitter-card.png',
-    locale: 'en-US',
+    robots: 'index, follow',
 
     // The following are subject to change. They are placeholders for now.
     // This project provide a default author content see src/content/authors/default.mdx, so these details are better to be inserted there.
@@ -103,9 +104,17 @@ export const SITE_METADATA = {
 export const ITEMS_PER_PAGE = 5;
 
 export const NAVIGATION = [
-    {href: '/', title: 'Home'},
-    {href: '/blog', title: 'Blog'},
-    {href: '/tags', title: 'Tags'},
-    {href: '/projects', title: 'Projects'},
-    {href: '/about', title: 'About'},
+    {href: '/', title: 'nav.home'},
+    {href: '/blog', title: 'nav.blog'},
+    {href: '/tags', title: 'nav.tags'},
+    {href: '/projects', title: 'nav.projects'},
+    {href: '/about', title: 'nav.about'},
 ]
+
+export const POST_METADATA = {
+    showCover: true,
+    showFullWidthCover: false,
+    showSummary: true,
+    showShareButtons: 'both',   // 'top' | 'bottom' | 'both' | false
+    showTableOfContents: true,
+};

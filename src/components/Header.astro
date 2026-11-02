@@ -4,36 +4,48 @@ import HeaderLink from "./HeaderLink.astro";
 import Logo from "./Logo.astro";
 import MobileNav from "@/solid/MobileNav.tsx";
 import ThemeSwitcher from "@/solid/ThemeSwitcher.tsx";
-import { useTranslations } from "@/i18n";
+import { useTranslations, getLangFromUrl } from "@/i18n"; // Añadimos getLangFromUrl
 import cabecera from "@/assets/cabecera.jpg"
 import Cabecera_url from "@/assets/cabecera.jpg?url"
 import { getImage } from "astro:assets";
 
-const t = useTranslations();
+const lang = getLangFromUrl(Astro.url); // Detectamos el idioma
+const t = useTranslations(lang);        // Pasamos el idioma a las traducciones de Astro
+
 const optimizedBackground = await getImage({src: cabecera, format: 'webp'})
 ---
 
-<header class="flex items-center justify-between py-10 shadow-lg" style="background-image: url({Cabecera_url})">
+<header 
+    class="flex items-center justify-between py-10 px-4 shadow-lg bg-cover bg-center min-h-[250px]"
+    style={`background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${Cabecera_url})`}>
+  
   <div class="mr-3 md:w-40 w-20">
     <a href="/" aria-label={t("siteMetadata.headerTitle")}>
       <Logo class="w-full" />
     </a>
   </div>
-  <div class="flex items-center leading-5 space-x-4 sm:space-x-6">
-    {
-      NAVIGATION.filter((link) => link.href !== "/").map((link) => (
+
+  <div class="flex items-center gap-4">
+    <div class="hidden sm:flex items-center space-x-6 mr-4">
+      {NAVIGATION.filter((link) => link.href !== "/").map((link) => (
         <HeaderLink
           href={link.href}
-          class="hidden sm:block font-medium text-gray-900 dark:text-gray-100"
+          class="font-medium text-white hover:text-gray-300 transition-colors drop-shadow-md"
         >
           {t(link.title)}
         </HeaderLink>
-      ))
-    }
-    <div class="flex gap-4">
-      <!--<SearchButton />-->
-      <ThemeSwitcher client:only="solid-js" />
-      <MobileNav client:only="solid-js" />
+      ))}
+    </div>
+
+    <div class="flex items-center gap-3">
+      <div class="text-white">
+        <ThemeSwitcher client:only="solid-js" />
+      </div>
+      
+      <div class="sm:hidden flex items-center">
+        <!-- LE PASAMOS EL IDIOMA AL COMPONENTE MÓVIL -->
+        <MobileNav client:only="solid-js" lang={lang} />
+      </div>
     </div>
   </div>
 </header>

@@ -23,11 +23,15 @@ interface Props {
 const tags = await getCollection("tags");
 const posts = await getCollection("blog");
 
-function tagCount(slug: CollectionEntry<"tags">["slug"]) {
+function tagCount(entry: CollectionEntry<"tags">) {
   if (!posts) return 0;
-  return posts.filter((post) => post.data.tags.some((tag) => tag.slug === slug))
-    .length;
+  return posts.filter((post) =>
+    post.data.tags.some((tag) => tag.id === entry.slug)
+  ).length;
 }
+
+// NUEVO: filtramos solo los tags que tienen al menos 1 post
+const activeTags = tags.filter((entry) => tagCount(entry) > 0);
 
 function isSamePath(path: string) {
   return Astro.url.pathname === path;
@@ -73,19 +77,19 @@ const isBlogPage = Astro.url.pathname.startsWith("/blog");
           }
           <ul>
             {
-              tags.map(({ slug, data }) => (
+              activeTags.map((entry) => (
                 <li class="my-3">
-                  {isSamePath(`/tag/${slug}`) ? (
+                  {isSamePath(`/tags/${entry.slug}`) ? (
                     <h3 class="inline py-2 px-3 uppercase text-sm font-bold text-primary-500">
-                      {`${data.name} (${tagCount(slug)})`}
+                      {`${entry.data.name} (${tagCount(entry)})`}
                     </h3>
                   ) : (
                     <Link
-                      href={`/tags/${slug}`}
+                      href={`/tags/${entry.slug}`}
                       class="py-2 px-3 uppercase text-sm font-medium text-gray-500 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-500"
-                      aria-label={`View posts tagged ${data.name}`}
+                      aria-label={`View posts tagged ${entry.data.name}`}
                     >
-                      {`${data.name} (${tagCount(slug)})`}
+                      {`${entry.data.name} (${tagCount(entry)})`}
                     </Link>
                   )}
                 </li>
@@ -117,8 +121,8 @@ const isBlogPage = Astro.url.pathname.startsWith("/blog");
                         </Link>
                       </h3>
                       <div class="flex flex-wrap">
-                        {tags.map(({ slug }) => (
-                          <Tag slug={slug} />
+                        {tags.map((tag) => (
+                          <Tag slug={tag.id} />
                         ))}
                       </div>
                     </div>

@@ -7,9 +7,9 @@ export const defaultLang = 'es' as const;
 export const ui = {
   'en': {
     // Site Metadata
-    'siteMetadata.title': 'Astro Starter Blog',
-    'siteMetadata.headerTitle': 'Astro Starter Blog',   
-    'siteMetadata.description': 'A blog created with Astro and Tailwind.css',
+    'siteMetadata.title': 'Franz\'s blog',
+    'siteMetadata.headerTitle': 'Franz\'s blog',   
+    'siteMetadata.description': 'A blog created by Franz Jimeno',
     'siteMetadata.language': 'en-US',
 
     // Pages
@@ -76,8 +76,8 @@ export const ui = {
   'es': {
     // Site Metadata
     'siteMetadata.title': 'Astro Blog de inicio',
-    'siteMetadata.headerTitle': 'Astro Bloog de inicio',   
-    'siteMetadata.description': 'Un blog creado con Tailwind y Astro.',
+    'siteMetadata.headerTitle': 'Astro Blog de inicio',   
+    'siteMetadata.description': 'Blog personal de Franz Jimeno sobre tecnología, programación y redes',
     'siteMetadata.language': 'es-ES',
 
     // Pages
@@ -106,7 +106,7 @@ export const ui = {
     'components.scrollTopAndComments.scrollTop': 'Desplazarse al inicio',
     'components.themeSwitcher.toggleDarkMode': 'Cambiar de modo',
     'components.card.linkToPost': 'Leer más sobre {title}',
-    'components.mobileNav.toggleMenu': 'Intercambiar Menúi',
+    'components.mobileNav.toggleMenu': 'Intercambiar Menú',
     'components.listPostCover.publishedAt': 'Publicado el',
     'components.pagination.previous': 'Previo',
     'components.pagination.next': 'Siguiente',

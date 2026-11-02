@@ -51,8 +51,8 @@ const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
                           </Link>
                         </h2>
                         <div class="flex flex-wrap">
-                          {tags.map(({ slug }) => (
-                            <Tag slug={slug} />
+                          {tags.map((tag) => (
+                            <Tag slug={tag.id} />
                           ))}
                         </div>
                       </div>
@@ -64,7 +64,7 @@ const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
                       <Link
                         href={`/blog/${post.slug}`}
                         class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                        aria-label={t('pages.home.readMoreAbout', {title})}
+                        aria-label={t('pages.home.readMoreAbout', { title })}
                       >
                         {t('pages.home.readMore')} &rarr;
                       </Link>
@@ -91,10 +91,4 @@ const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
       </div>
     )
   }
-  <!--TODO: Add newsletter form-->
-  <!--{siteMetadata.newsletter?.provider && (-->
-  <!--        <div class="flex items-center justify-center pt-4">-->
-  <!--            <NewsletterForm />-->
-  <!--        </div>-->
-  <!--)}-->
 </RootLayout>

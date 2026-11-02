@@ -17,8 +17,9 @@ const authors = defineCollection({
 
 const blog = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({image}) => z.object({
     title: z.string(),
+    cover: image().optional(),
     // Soporta tanto 'date' como 'pubDate' sin romper entradas antiguas
     date: z.coerce.date().optional(),
     pubDate: z.coerce.date().optional(),

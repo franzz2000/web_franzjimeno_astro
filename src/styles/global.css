@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Ajustes de listas de tareas */
 .task-list-item::before {

@@ -4,7 +4,6 @@ date: "2022-06-17"
 tags: ["programación",]
 draft: false
 summary: Cómo instalar Liveray en un Docker
-cover: '@/assets/og-image.png'
 ---
 
 # Introducción
@@ -75,4 +74,4 @@ Por ejemplo, si quieres cambiar el fichero `setenv.sh` de Tomcat, entonces añad
 
 Todos los scripts en el directorio `/mnt/liferay/scripts` se ejecutarán antes de que arranque Liferay DXP. Coloca los ficheros en `$(pwd)/xyz123/deploy` para instalar los módulos en el momento del arranque.
 
-Se puede encontrar más información en https://learn.liferay.com/dxp/latest/en/installation-and-upgrades/installing-liferay/using-liferay-docker-images.html
+Se puede encontrar más información [aquí](https://learn.liferay.com/w/dxp/self-hosted-installation-and-upgrades/using-liferay-docker-images?p_l_back_url=https%3A%2F%2Flearn.liferay.com%2F&p_l_back_url_title=Home)
