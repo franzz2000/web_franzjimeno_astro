@@ -5,9 +5,7 @@ import Logo from "./Logo.astro";
 import MobileNav from "@/solid/MobileNav.tsx";
 import ThemeSwitcher from "@/solid/ThemeSwitcher.tsx";
 import { useTranslations, getLangFromUrl } from "@/i18n"; // Añadimos getLangFromUrl
-import cabecera from "@/assets/cabecera.jpg"
 import Cabecera_url from "@/assets/cabecera.jpg?url"
-import { getImage } from "astro:assets";
 
 const lang = getLangFromUrl(Astro.url); // Detectamos el idioma
 const t = useTranslations(lang);        // Pasamos el idioma a las traducciones de Astro

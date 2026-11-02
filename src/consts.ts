@@ -15,7 +15,7 @@ export const SITE_METADATA = {
     siteLogo: '/static/images/logo.png',
     socialBanner: '/static/images/twitter-card.png',
     robots: 'index, follow',
-    analytics: {},
+    analytics: {} as any,
 
     // The following are subject to change. They are placeholders for now.
     // This project provide a default author content see src/content/authors/default.mdx, so these details are better to be inserted there.
