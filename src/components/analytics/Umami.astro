@@ -7,4 +7,5 @@ export interface Props {
 
 const { dataId, site, host = '/umami.js' } = Astro.props;
 ---
+<!-- @ts-ignore -->
 <script defer src={site}{host} data-website-id={dataId} is:inline></script>

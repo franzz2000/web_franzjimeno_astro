@@ -12,7 +12,6 @@ import { getImage } from "astro:assets";
 const lang = getLangFromUrl(Astro.url); // Detectamos el idioma
 const t = useTranslations(lang);        // Pasamos el idioma a las traducciones de Astro
 
-const optimizedBackground = await getImage({src: cabecera, format: 'webp'})
 ---
 
 <header 
@@ -32,7 +31,7 @@ const optimizedBackground = await getImage({src: cabecera, format: 'webp'})
           href={link.href}
           class="font-medium text-white hover:text-gray-300 transition-colors drop-shadow-md"
         >
-          {t(link.title)}
+          {t(link.title as any)}
         </HeaderLink>
       ))}
     </div>

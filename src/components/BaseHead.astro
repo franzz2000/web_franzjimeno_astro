@@ -1,7 +1,7 @@
 ---
 import "@/styles/global.css";
 import { SITE_METADATA } from "@/consts";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import "@fontsource/onest";
 import { SEO } from "astro-seo";
 import { getEntry, type CollectionEntry } from "astro:content";
@@ -64,7 +64,7 @@ if (article?.cover) {
   });
 }
 
-const twitterCreator = article?.authorTwitter || creator.data.twitter;
+const twitterCreator = article?.authorTwitter || creator?.data.twitter;
 const isProduction = import.meta.env.PROD;
 ---
 
@@ -141,5 +141,5 @@ const isProduction = import.meta.env.PROD;
     }}
   />
   {isProduction && <Analytics />}
-  <ViewTransitions />
+  <ClientRouter />
 </head>

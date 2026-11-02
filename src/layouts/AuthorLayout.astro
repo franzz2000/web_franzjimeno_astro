@@ -32,7 +32,7 @@ const {
 const authorPosts = await getCollection(
   "blog",
   ({ data: { authors, draft } }) => {
-    return !draft && authors.some((author) => author.slug === Astro.props.slug);
+    return !draft && authors.some((author) => author.id === Astro.props.slug);
   }
 )
   .then(sortBlogPosts)

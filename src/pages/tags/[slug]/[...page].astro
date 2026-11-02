@@ -50,7 +50,7 @@ if (page.currentPage > 1) {
 
 <ListWithTagsLayout
   title={entry.data.name}
-  description={entry.data.description}
+  description={entry.data.description || ""}
   page={page}
   {robots}
   {titleTemplate}
