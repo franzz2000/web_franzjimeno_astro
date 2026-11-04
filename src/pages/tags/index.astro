@@ -11,7 +11,7 @@ const t = useTranslations();
 const tags = await getCollection('tags');
 const posts = await getCollection('blog');
 
-function tagCount(slug: CollectionEntry<'tags'>['slug']) {
+function tagCount(slug: CollectionEntry<'tags'>['id']) {
     if (!posts) return 0;
     return posts.filter((post) => post.data.tags.some(tag => tag.id === slug)).length;
 }
