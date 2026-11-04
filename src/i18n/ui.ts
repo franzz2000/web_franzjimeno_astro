@@ -75,8 +75,8 @@ export const ui = {
   }, 
   'es': {
     // Site Metadata
-    'siteMetadata.title': 'Astro Blog de inicio',
-    'siteMetadata.headerTitle': 'Astro Blog de inicio',   
+    'siteMetadata.title': 'Blog de Franz Jimeno',
+    'siteMetadata.headerTitle': 'Franz Jimeno',   
     'siteMetadata.description': 'Blog personal de Franz Jimeno sobre tecnología, programación y redes',
     'siteMetadata.language': 'es-ES',
 
