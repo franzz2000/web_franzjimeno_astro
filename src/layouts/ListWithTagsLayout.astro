@@ -26,7 +26,7 @@ const posts = await getCollection("blog");
 function tagCount(entry: CollectionEntry<"tags">) {
   if (!posts) return 0;
   return posts.filter((post) =>
-    post.data.tags.some((tag) => tag.id === entry.slug)
+    post.data.tags.some((tag) => tag.id === entry.id)
   ).length;
 }
 
@@ -79,13 +79,13 @@ const isBlogPage = Astro.url.pathname.startsWith("/blog");
             {
               activeTags.map((entry) => (
                 <li class="my-3">
-                  {isSamePath(`/tags/${entry.slug}`) ? (
+                  {isSamePath(`/tags/${entry.id}`) ? (
                     <h3 class="inline py-2 px-3 uppercase text-sm font-bold text-primary-500">
                       {`${entry.data.name} (${tagCount(entry)})`}
                     </h3>
                   ) : (
                     <Link
-                      href={`/tags/${entry.slug}`}
+                      href={`/tags/${entry.id}`}
                       class="py-2 px-3 uppercase text-sm font-medium text-gray-500 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-500"
                       aria-label={`View posts tagged ${entry.data.name}`}
                     >
@@ -101,7 +101,7 @@ const isBlogPage = Astro.url.pathname.startsWith("/blog");
       <div>
         <ul>
           {
-            page.data.map(({ slug, data: { date, title, summary, tags } }) => (
+            page.data.map(({ id, data: { date, title, summary, tags } }) => (
               <li class="py-5">
                 <article class="space-y-2 flex flex-col xl:space-y-0">
                   <dl>
@@ -114,7 +114,7 @@ const isBlogPage = Astro.url.pathname.startsWith("/blog");
                     <div>
                       <h3 class="text-2xl font-bold leading-8 tracking-tight">
                         <Link
-                          href={`/blog/${slug}`}
+                          href={`/blog/${id}`}
                           class="text-gray-900 dark:text-gray-100"
                         >
                           {title}

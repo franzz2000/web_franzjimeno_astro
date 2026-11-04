@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 
 // import ListLayout from "@/layouts/ListLayout.astro";
 import { ITEMS_PER_PAGE } from "@/consts";
@@ -20,24 +20,20 @@ export const getStaticPaths = (async ({ paginate }) => {
   const tags = await getCollection("tags");
   const posts = await getCollection("blog", excludeDrafts).then(sortBlogPosts);
 
-  // Log para confirmar qué llega
-  console.log("TAGS:", tags.map(t => ({ id: t.id, slug: t.slug, name: t.data.name })));
-  console.log("POST TAGS:", posts.flatMap(p => p.data.tags).slice(0, 10));
-
   return tags.flatMap((entry) => {
     const tagPosts = posts.filter((post) =>
-      post.data.tags.some((tag) => tag.id === entry.slug)
+      post.data.tags.some((tag) => tag.id === entry.id)
     );
     return paginate(tagPosts, {
       pageSize: ITEMS_PER_PAGE,
-      params: { slug: entry.slug },
+      params: { slug: entry.id },
       props: { entry },
     });
   });
 }) satisfies GetStaticPaths;
 
 const { page, entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 let robots;
 let titleTemplate = "";

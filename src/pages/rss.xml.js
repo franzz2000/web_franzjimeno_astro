@@ -11,11 +11,11 @@ export async function GET(context) {
     title: t('siteMetadata.title'),
     description: t('siteMetadata.description'),
     site: context.site,
-    items: posts.map(({ slug, data }) => ({
+    items: posts.map(({ id, data }) => ({
       title: data.title,
       description: data.summary,
       pubDate: data.date,
-      link: `/blog/${slug}/`,
+      link: `/blog/${id}/`,
       categories: data.tags.map((tag) => tag.id),
     })),
   });
