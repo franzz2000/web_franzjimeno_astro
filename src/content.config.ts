@@ -9,10 +9,10 @@ const authors = defineCollection({
     avatar: z.string().optional(),
     occupation: z.string().optional(),
     company: z.string().optional(),
-    email: z.string().email().optional(), // Cambiado a optional para evitar fallos si falta en algún MD
-    twitter: z.string().url().optional(),
-    linkedin: z.string().url().optional(),
-    github: z.string().url().optional(),
+    email: z.email().optional(), // Cambiado a optional para evitar fallos si falta en algún MD
+    twitter: z.url().optional(),
+    linkedin: z.url().optional(),
+    github: z.url().optional(),
     layout: z.string().optional(), // Corregido: ya no exige formato URL
     shortBio: z.string().optional(),
   }),
