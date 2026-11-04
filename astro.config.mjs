@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from "@tailwindcss/vite";
 import rehypeExternalLinks from 'rehype-external-links';
+import { unified } from '@astrojs/markdown-remark';
 
 import {SITE_METADATA} from "./src/consts.ts";
 
@@ -17,6 +18,7 @@ export default defineConfig({
         plugins:[tailwindcss()],
     },
     markdown: {
+      processor: unified(),
       rehypePlugins: [
         [rehypeExternalLinks, {
           target: "_blank",
