@@ -29,7 +29,7 @@ const {
 {fantom?.site && <Fathom {...fantom} />}
 {minimalAnalyticsId && <MinimalAnalytics id={minimalAnalyticsId} />}
 {simpleAnalytics && <SimpleAnalytics />}
-{matomo.id && matomo.url && <Matomo {...matomo} />}
-{plausible.domain && <Plausible {...plausible} />}
+{matomo?.id && matomo?.url && <Matomo {...matomo} />}
+{plausible?.domain && <Plausible {...plausible} />}
 {umami?.site && umami?.dataId && <Umami {...umami} />}
 {metricalApp && <Metrical app={metricalApp} />}
