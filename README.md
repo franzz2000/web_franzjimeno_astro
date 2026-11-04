@@ -1,91 +1,118 @@
-![img.png](img.png)
+# Web de Franz Jimeno
 
-# Tailwind Astro Starter Project
-[![GitHub Repo stars](https://img.shields.io/github/stars/wanoo21/tailwind-astro-starting-blog?style=social)](https://GitHub.com/wanoo21/tailwind-astro-starting-blog/stargazers/)
-[![GitHub forks](https://img.shields.io/github/forks/wanoo21/tailwind-astro-starting-blog?style=social)](https://GitHub.com/wanoo21/tailwind-astro-starting-blog/network/)
-[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fipwanciu)](https://twitter.com/ipwanciu)
-[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&link=https://github.com/sponsors/wanoo21)](https://github.com/sponsors/wanoo21)
+[**Visitar la web → franzjimeno.es**](https://franzjimeno.es)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/wanoo21/tailwind-astro-starting-blog)
+Repositorio de mi página web personal y blog, donde recopilo artículos, notas y soluciones sobre **tecnología, programación, redes y herramientas informáticas**. La idea es documentar lo que voy aprendiendo y compartir soluciones que pueden resultar útiles a otras personas.
 
-This template is perfect for those who want to use Tailwind CSS and Astro to build a blog.
+La web está escrita principalmente en español y se publica como sitio estático mediante **Astro** y **GitHub Pages**.
 
-It is inspired by the [Tailwind Next.js Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) - one of the most popular Next.js blogging templates.
+## Contenido
 
-Feature request or Facing issue? Check the [discussion page](https://github.com/wanoo21/tailwind-astro-starting-blog/discussions) to see if it has been brought up previously. Otherwise, feel free to start a new discussion thread. All ideas are welcomed!
+- **Inicio:** últimas entradas publicadas.
+- **Blog:** artículos y notas técnicas, con paginación.
+- **Etiquetas:** navegación por temas.
+- **Acerca de:** información sobre el autor.
+- **Proyectos:** sección disponible en la web; actualmente conserva contenido de ejemplo de la plantilla.
 
-## Demo
+También dispone de un [canal RSS](https://franzjimeno.es/rss.xml) para seguir las publicaciones.
 
-[Live Demo](https://tasb.yon.fun/) - Deployed on Vercel.
+## Tecnologías
 
-## Features
+| Tecnología | Uso |
+| --- | --- |
+| [Astro 5](https://astro.build/) | Generación del sitio estático |
+| [TypeScript](https://www.typescriptlang.org/) | Código y configuración |
+| [Tailwind CSS 4](https://tailwindcss.com/) | Estilos |
+| [MDX](https://mdxjs.com/) | Contenido enriquecido del blog |
+| [SolidJS](https://www.solidjs.com/) | Componentes interactivos |
+| [GitHub Actions](https://github.com/features/actions) | Compilación y despliegue automático |
+| [GitHub Pages](https://pages.github.com/) | Alojamiento y publicación |
 
-- Astro v4 with Typescript
-- Astro MDX support
-- [Solid-js](https://solidjs.com) for some interactivity
-- Easy styling customization with [Tailwind 3.3](https://tailwindcss.com/blog/tailwindcss-v3-3) and primary color attribute
-- Mobile-friendly view
-- Light and dark theme
-- Font optimization via [@fontsource](https://fontsource.org/)
-- Automatic image optimization via Astro image component
-- Support for tags - each unique tag will be its own page
-- Support for multiple authors
-- 2 different blog post layouts, including a full-width cover image
-- 2 different blog listing layouts
-- Support for nested routing of blog posts
-- Projects page
-- i18n support
-- **Fully SEO optimized**, including Open Graph and Twitter Cards
-- Almost Perfect lighthouse score (for mobile - 99/95/100/91) - [Lighthouse Report](https://pagespeed.web.dev/analysis/https-tasb-yon-fun/gp1vypobei?form_factor=mobile) 
+El proyecto incluye soporte para imágenes, temas claro y oscuro, metadatos SEO, mapa del sitio y RSS.
 
-![lighthouse score](image.png)
+## Desarrollo local
 
-Even thought these features looks the same as the original template, they are implemented in a different way, and there are more to come.
+Se recomienda utilizar una versión reciente de **Node.js** (por ejemplo, Node.js 24) y npm.
 
-However, there are some features that are not in the original template, like:
+```bash
+# Clonar el repositorio
+git clone https://github.com/franzz2000/web_franzjimeno_astro.git
+cd web_franzjimeno_astro
 
-- Support for multiple authors pages - **each author will have** its own page, with a list of all the posts written by him/her.
-- Support for multiple tags pages - **each tag has its own page with custom description**, that can be customized with markdown. 
-- Related posts - **each post has** a list of related posts, provided by the author inside the markdown file.
-- Pagination inside blog/tags pages - **each blog/tags page has** a pagination.
-- Cool animations provided by Astro.
-- And many more that would come in the future.
+# Instalar dependencias
+npm install
 
-## Internationalization
+# Iniciar el servidor de desarrollo
+npm run dev
+```
 
-This template has support for i18n, it's set up for English as default. You can add more languages in the `src/i18n/ui.ts` file. It doesn't have support for dynamic language change, but it's easy to implement.
+La web de desarrollo estará disponible en [http://localhost:4321](http://localhost:4321).
 
-## Extend / Customize
+| Comando | Función |
+| --- | --- |
+| `npm run dev` | Inicia el servidor de desarrollo |
+| `npm run build` | Comprueba el proyecto con Astro y genera `dist/` |
+| `npm run preview` | Previsualiza localmente la compilación |
+| `npm run astro -- --help` | Muestra la ayuda de Astro |
 
-`src/consts.ts` contains a list of constants that you can customize to your liking, including the blog title, description, author, social media links, etc.
+## Organización del proyecto
 
-`src/functions.ts` contains a list of functions that changes the default behavior of the template, including default post sorting and exclude draft posts.
+```text
+.github/workflows/deploy.yml  Despliegue en GitHub Pages
+src/
+├── components/              Componentes de la interfaz
+├── content/
+│   ├── authors/             Información sobre autores
+│   ├── blog/                Artículos en Markdown/MDX
+│   └── tags/                Etiquetas
+├── i18n/                    Textos de la interfaz
+├── layouts/                 Plantillas de página
+├── pages/                   Rutas, páginas y RSS
+├── consts.ts                Metadatos y navegación
+└── functions.ts             Utilidades del blog
+astro.config.mjs             Configuración de Astro
+```
 
-`src/content/authors/default.mdx` contains the default author information. You can add more authors by adding more `.mdx` files in the `src/content/authors` folder.
+Las colecciones de contenido y sus campos se definen en `src/content/config.ts`.
 
-`src/content/tags/default.mdx` contains the default tag information. You can add more tags by adding more `.mdx` files in the `src/content/tags` folder.
+### Añadir una entrada
 
-`src/content/config.ts` contains all fields for author, blog and tags pages. Check what's required and what's not. You can also add more fields if you want to.
+Crea un archivo `.md` o `.mdx` en `src/content/blog/`. Por ejemplo:
 
-## 🧞 Commands
+```md
+---
+title: "Título de la entrada"
+date: 2026-11-04
+summary: "Breve descripción del artículo."
+draft: false
+---
 
-All commands are run from the root of the project, from a terminal:
+Aquí comienza el contenido de la entrada.
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Se pueden añadir campos opcionales como `cover`, `tags`, `authors`, `lastmod` o `related`, respetando los esquemas de `src/content/config.ts`. Las etiquetas y los autores se referencian por sus identificadores de colección.
 
-### 🐳 Docker Commands
+Para modificar el título del sitio, la URL, los enlaces sociales o la navegación, consulta `src/consts.ts`. Los textos de la interfaz se encuentran en `src/i18n/ui.ts`.
 
-All Docker commands are run from the root of the project, from a terminal:
+## Publicación
 
-| Command                               | Action                                                   |
-| :------------------------------------ | :------------------------------------------------------- |
-| `docker build -t app:1.0.0 .`         | Build the Docker image for the Astro application.        |
-| `docker run -p 80:4321 app:1.0.0`     | Run a Docker container with the built Astro application. |
-| `docker pull edwardb11/app:2.0.0`     | Download the Docker image from Docker Hub.               |
+La web se publica en **[https://franzjimeno.es](https://franzjimeno.es)**, con dominio personalizado y HTTPS gestionado por GitHub Pages.
+
+El workflow `[.github/workflows/deploy.yml](.github/workflows/deploy.yml)` se ejecuta automáticamente con cada `push` a la rama `main` (y también se puede lanzar manualmente desde GitHub Actions). Sus dos trabajos principales son:
+
+1. **Build:** instala las dependencias, compila Astro y sube el artefacto de la web.
+2. **Deploy:** publica el artefacto en GitHub Pages.
+
+Para publicar cambios:
+
+```bash
+git add .
+git commit -m "Actualizar contenido"
+git push origin main
+```
+
+El sitio estático se genera en `dist/`; no es necesario alojar un servidor Node.js para servirlo en producción.
+
+## Origen del proyecto
+
+La web parte de la plantilla [Tailwind Astro Starting Blog](https://github.com/wanoo21/tailwind-astro-starting-blog), adaptada a mi contenido, configuración y despliegue actual.
