@@ -1,0 +1,44 @@
+name: Upgrade Astro dependencies in test branch
+
+on:
+  push:
+    branches:
+      - upgrade/astro-7
+    paths:
+      - .github/workflows/astro-dependencies-upgrade.yml
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Upgrade Astro and its integrations
+        run: |
+          npm install --save \
+            'astro@^7' \
+            '@astrojs/mdx@^7' \
+            '@astrojs/solid-js@latest' \
+            '@astrojs/sitemap@latest' \
+            '@astrojs/rss@latest' \
+            '@astrojs/check@latest' \
+            '@astrojs/markdown-remark@latest'
+      - name: Save updated dependency manifest and lockfile to test branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add package.json package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'build: update Astro 7 and official integrations'
+            git push origin HEAD:upgrade/astro-7
+          fi
+      - name: Check and build with Astro 7
+        run: npm run build
