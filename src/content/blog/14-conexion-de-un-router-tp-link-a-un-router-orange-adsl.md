@@ -1,7 +1,7 @@
 ---
 title: Conexión de un router TP-LINK a un router orange ADSL
 date: "2013-08-17"
-tags: ["default"]
+tags: []
 draft: false
 summary: He estado buscando en numerosos sitios la forma de hacer una secuencia de grafos que mostraran cómo se iban recolocando los vértices aplicando un determinado algoritmo dando sensación de movimiento, y no encontraba nada hasta que llegué a esta dirección
 ---

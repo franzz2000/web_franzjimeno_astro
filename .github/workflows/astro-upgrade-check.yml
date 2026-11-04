@@ -1,0 +1,48 @@
+name: Validate Astro build
+
+on:
+  push:
+    branches:
+      - upgrade/astro-7
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Build without publishing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Inspect npm security audit
+        run: |
+          npm audit --json > /tmp/astro-audit.json || true
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const audit = JSON.parse(fs.readFileSync('/tmp/astro-audit.json', 'utf8'));
+          console.log('Vulnerability summary:', JSON.stringify(audit.metadata?.vulnerabilities ?? {}));
+          for (const [name, issue] of Object.entries(audit.vulnerabilities ?? {})) {
+            const advisories = issue.via.filter(v => typeof v === 'object')
+              .map(v => ({title: v.title, url: v.url, range: v.range}));
+            console.log(JSON.stringify({
+              package: name,
+              severity: issue.severity,
+              direct: issue.isDirect,
+              range: issue.range,
+              via: issue.via.filter(v => typeof v === 'string'),
+              advisories,
+              fixAvailable: issue.fixAvailable
+            }));
+          }
+          NODE
+      - name: Check and build
+        run: npm run build

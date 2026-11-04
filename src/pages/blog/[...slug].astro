@@ -1,0 +1,29 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import PostLayout from "@/layouts/PostLayout.astro";
+import { sortBlogPosts } from "@/functions";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  previous?: CollectionEntry<"blog">;
+  next?: CollectionEntry<"blog">;
+}
+
+export const getStaticPaths = (async () => {
+  const posts = sortBlogPosts(await getCollection("blog", ({ data }) => !data.draft));
+
+  return posts.map((post, index) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      previous: posts[index + 1],
+      next: posts[index - 1],
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post, previous, next } = Astro.props;
+---
+
+<PostLayout post={post} prev={previous} next={next} />

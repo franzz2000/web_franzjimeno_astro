@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from "@tailwindcss/vite";
 import rehypeExternalLinks from 'rehype-external-links';
+import { unified } from '@astrojs/markdown-remark';
 
 import {SITE_METADATA} from "./src/consts.ts";
 
@@ -17,11 +18,13 @@ export default defineConfig({
         plugins:[tailwindcss()],
     },
     markdown: {
-      rehypePlugins: [
-        [rehypeExternalLinks, {
+      // Los artículos antiguos utilizan bloques ```R; Shiki identifica el idioma como 'r'.
+      shikiConfig: { langAlias: { R: 'r' } },
+      processor: unified({
+        rehypePlugins: [[rehypeExternalLinks, {
           target: "_blank",
           rel: ['noopener', 'noreferrer']
-        }]
-      ]
+        }]],
+      }),
     }
 });
