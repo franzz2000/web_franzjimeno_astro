@@ -1,29 +1,8 @@
 ---
-import Card from "@/components/Card.astro";
 import { useTranslations } from "@/i18n";
 import RootLayout from "@/layouts/RootLayout.astro";
 
 const t = useTranslations();
-
-const projectsData = [
-  {
-    title: "A Search Engine",
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc:
-      "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
-    href: "https://www.google.com",
-  },
-  {
-    title: "The Time Machine",
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: "https://placeholder.com/500x190",
-    href: "/blog/the-time-machine",
-  },
-];
 ---
 
 <RootLayout
@@ -41,19 +20,8 @@ const projectsData = [
         {t("pages.projects.showcase")}
       </p>
     </div>
-    <div class="container py-12">
-      <div class="-m-4 flex flex-wrap">
-        {
-          projectsData.map((d) => (
-            <Card
-              title={d.title}
-              description={d.description}
-              imgSrc={d.imgSrc}
-              href={d.href}
-            />
-          ))
-        }
-      </div>
-    </div>
+    <p class="py-12 text-gray-500 dark:text-gray-400">
+      {t("pages.projects.noProjects")}
+    </p>
   </div>
 </RootLayout>
