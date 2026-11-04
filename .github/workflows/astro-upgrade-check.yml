@@ -1,9 +1,11 @@
-name: Validate Astro upgrade branch
+name: Validate Astro build
 
 on:
   push:
     branches:
       - upgrade/astro-7
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
