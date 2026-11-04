@@ -18,12 +18,11 @@ export default defineConfig({
         plugins:[tailwindcss()],
     },
     markdown: {
-      processor: unified(),
-      rehypePlugins: [
-        [rehypeExternalLinks, {
+      processor: unified({
+        rehypePlugins: [[rehypeExternalLinks, {
           target: "_blank",
           rel: ['noopener', 'noreferrer']
-        }]
-      ]
+        }]],
+      }),
     }
 });
