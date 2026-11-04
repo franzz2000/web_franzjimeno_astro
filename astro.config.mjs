@@ -18,6 +18,8 @@ export default defineConfig({
         plugins:[tailwindcss()],
     },
     markdown: {
+      // Los artículos antiguos utilizan bloques ```R; Shiki identifica el idioma como 'r'.
+      shikiConfig: { langAlias: { R: 'r' } },
       processor: unified({
         rehypePlugins: [[rehypeExternalLinks, {
           target: "_blank",
