@@ -4,9 +4,9 @@
  * A few of these are not used yet, and are subject to change, example of this is Author.
  */
 export const SITE_METADATA = {
-    title: 'Web de Franz Jimeno',
+    title: 'Blog de Franz Jimeno',
     headerTitle: 'Franz Jimeno',
-    description: 'Web personal de Franz Jimeno',
+    description: 'Blog personal de Franz Jimeno sobre tecnología, programación y proyectos',
     language: 'es-ES',
     locale: 'es-ES',
     theme: 'system', // Options: system, light, dark, Does not work yet
